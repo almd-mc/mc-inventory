@@ -76,7 +76,7 @@ fn container_size(wt: WindowType) -> Int = {
 fn new_window(id: Int, wt: WindowType, title: String) -> Window = {
   let size = window_size(wt)
   var slots: List[Option[Slot]] = []
-  for _i in 0..size {
+  for _i in 0..<size {
     slots = slots + [none]
   }
   { id: id, window_type: wt, title: title, slots: slots, cursor: none }
@@ -108,7 +108,7 @@ fn set_slot(win: Window, index: Int, slot: Option[Slot]) -> Window = {
   if index < 0 or index >= list.length(win.slots) then win
   else {
     var new_slots: List[Option[Slot]] = []
-    for i in 0..list.length(win.slots) {
+    for i in 0..<list.length(win.slots) {
       if i == index then new_slots = new_slots + [slot]
       else new_slots = new_slots + [list.get(win.slots, i) ?? none]
     }
@@ -214,7 +214,7 @@ fn count_item(win: Window, item_id: Int) -> Int = {
 
 fn first_empty(win: Window) -> Option[Int] = {
   var found: Option[Int] = none
-  for i in 0..list.length(win.slots) {
+  for i in 0..<list.length(win.slots) {
     match found {
       some(_f) => (),
       none => {
@@ -231,7 +231,7 @@ fn first_empty(win: Window) -> Option[Int] = {
 
 fn find_item(win: Window, item_id: Int) -> Option[Int] = {
   var found: Option[Int] = none
-  for i in 0..list.length(win.slots) {
+  for i in 0..<list.length(win.slots) {
     match found {
       some(_f) => (),
       none => {
